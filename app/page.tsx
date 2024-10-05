@@ -1,7 +1,9 @@
 "use client";
-import Tasks from "./Tasks/Tasks";
+import Tasks from "./Components/Tasks/Tasks";
+import { useGlobalState } from "./context/golbalProvider";
 
 export default function Home() {
+  const { tasks } = useGlobalState();
 
-  return <Tasks title={""} tasks={[]} />;
+  return <Tasks title="All Tasks" tasks={tasks} />;
 }

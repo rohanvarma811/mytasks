@@ -1,9 +1,9 @@
 "use client";
-import { useGlobalState } from "../context/golbalProvider";
+import { useGlobalState } from "../../context/golbalProvider";
 import { edit, trash } from "@/app/utils/Icons";
 import React from "react";
 import styled from "styled-components";
-import { formatRevalidate } from "next/dist/server/lib/revalidate";
+import formatDate from "@/app/utils/formatDate";
 
 interface Props {
   title: string;
