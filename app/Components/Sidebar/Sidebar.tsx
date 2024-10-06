@@ -9,10 +9,11 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../Button/Button";
 import { arrowLeft, bars, logout } from "@/app/utils/Icons";
-import { UserButton, useClerk, useUser } from "@clerk/nextjs";
+import { UserButton } from "@clerk/nextjs";
+import { useClerk, useUser } from "@clerk/nextjs";
 
 function Sidebar() {
-  const { theme, collapsed, collapseMenu } = useGlobalState();
+  const { theme } = useGlobalState();
   const { signOut } = useClerk();
 
   const { user } = useUser();
@@ -35,11 +36,13 @@ function Sidebar() {
     <div className="profile">
       <div className="profile-overlay"></div>
         <div className="image">
-          <Image width={70} height={70} src="/avatar1.png" alt="profile" />
+          <Image width={70} height={70} src={imageUrl} alt="profile" />
         </div>
-        <h1>
-          <span>Sin</span>
-          <span>Rostro</span>
+        <div className="user-btn absolute z-20 top-0 w-full h-full">
+          <UserButton />
+        </div>
+        <h1 className="capitalize">
+          {firstName} {lastName}
         </h1>
     </div>
     <ul className="nav-items">
@@ -47,6 +50,7 @@ function Sidebar() {
         const link = item.link;
         return (
         <li
+          key={item.id}
           className={`nav-item ${pathname === link ? "active" : ""}`}
           onClick={() => {
             handleClick(link);
@@ -105,23 +109,30 @@ const SidebarStyled = styled.nav`
     border-bottom: 2px solid ${(props) => props.theme.borderColor2};
   }
 
-  .user-btn {
-    .cl-rootBox {
-      width: 100%;
-      height: 100%;
 
-      .cl-userButtonBox {
-        width: 100%;
-        height: 100%;
-
-        .cl-userButtonTrigger {
-          width: 100%;
-          height: 100%;
-          opacity: 0;
-        }
-      }
-    }
+  // DIFERENT STYLE IS APPLIED HERE (PREVIOUS ONE IS NOT WORKING)
+  .user-btn .cl-rootBox {
+    width: 100%;
+    height: 100%;
   }
+
+  .user-btn .cl-userButtonBox {
+    width: 100%;
+    height: 100%;
+  }
+
+  .user-btn .cl-userButtonTrigger {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .user-btn.active .cl-userButtonTrigger {
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Make it visible on activation */
+  }
+
 
   .profile {
     margin: 1.5rem;
