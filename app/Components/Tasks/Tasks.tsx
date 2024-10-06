@@ -1,5 +1,5 @@
 "use client";
-import { useGlobalState } from "../../context/golbalProvider";
+import { useGlobalState } from "@/app/context/golbalProvider";
 import React from "react";
 import styled from "styled-components";
 import CreateContent from "../Modals/CreateContent";
@@ -36,7 +36,9 @@ function Tasks({ title, tasks }: Props) {
             id={task.id}
           />
         ))}
-        <button className="create-task" onClick={openModal}>
+        <button 
+          className="create-task" 
+          onClick={openModal}>
           {add}
           Add New Task
         </button>
