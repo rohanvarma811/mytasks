@@ -7,7 +7,6 @@ import TaskItem from "../TaskItem/TaskItem";
 import { add, plus } from "@/app/utils/Icons";
 import Modal from "../Modals/Modal";
 
-
 interface Props {
   title: string;
   tasks: any[];

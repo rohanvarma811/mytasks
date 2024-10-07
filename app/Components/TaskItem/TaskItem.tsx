@@ -1,5 +1,5 @@
 "use client";
-import { useGlobalState } from "../../context/golbalProvider";
+import { useGlobalState } from "@/app/context/golbalProvider";
 import { edit, trash } from "@/app/utils/Icons";
 import React from "react";
 import styled from "styled-components";

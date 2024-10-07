@@ -1,5 +1,5 @@
 "use client";
-import { useGlobalState } from "../../context/golbalProvider";
+import { useGlobalState } from "@/app/context/golbalProvider";
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
