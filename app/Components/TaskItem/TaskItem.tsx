@@ -14,7 +14,13 @@ interface Props {
 }
 
 function TaskItem({ title, description, date, isCompleted, id }: Props) {
-  const { theme, deleteTask, updateTask } = useGlobalState();
+  const { theme, deleteTask, updateTask, openModal } = useGlobalState();
+
+  // UPDATE COMING HERE SOON TO UPDATE THE TASK IN THE MENU ITSELF
+  const handleEdit = () => {
+    openModal(id); // Pass the task ID to open the modal for editing
+  };
+
   return (
     <TaskItemStyled theme={theme}>
       <h1>{title}</h1>
@@ -50,7 +56,7 @@ function TaskItem({ title, description, date, isCompleted, id }: Props) {
             Incomplete
           </button>
         )}
-        <button className="edit">{edit}</button>
+        <button className="edit" onClick={handleEdit}>{edit}</button>
         <button
           className="delete"
           onClick={() => {
