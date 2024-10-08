@@ -3,7 +3,7 @@
 
 npx next --version
 npx create-next-app@latest mytasks
-npm i styles-components
+npm i styled-components
 npm i @prisma/client prisma@latest
 npm install -g prisma 
 npx prisma init --datasource-provider mongodb
