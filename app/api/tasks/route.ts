@@ -9,17 +9,30 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
     }
 
+    // Pagination logic
+    const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get("page") || "1", 10);
+    const limit = parseInt(searchParams.get("limit") || "10", 10);
+    const skip = (page - 1) * limit;
+
+    // Only select required fields and apply pagination
     const tasks = await prisma.task.findMany({
       where: { userId },
-      take: 20, // Limit to 10 tasks
-      orderBy: { createdAt: 'desc' }, // Optional: sort by creation date
+      select: {
+        id: true, 
+        title: true,
+        description: true,
+        createdAt: true,
+      },
+      skip,
+      take: limit,
+      orderBy: { createdAt: 'desc' }, // Ensures the latest tasks are shown first
     });
-    
 
     return NextResponse.json(tasks);
   } catch (error) {
-    console.log("ERROR GETTING TASKS: ", error);
-    return NextResponse.json({ error: "Error updating task", status: 500 });
+    console.error("ERROR GETTING TASKS: ", error);
+    return NextResponse.json({ error: "Error getting tasks", status: 500 });
   }
 }
 
