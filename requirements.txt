@@ -1,0 +1,15 @@
+# Install the dependencies according to the Operating Software (Win10, 11 or Mac)
+# Follow the Top to bottom order while installing
+
+npx next --version
+npx create-next-app@latest mytasks
+npm i styles-components
+npm i @prisma/client prisma@latest
+npm install -g prisma 
+npx prisma init --datasource-provider mongodb
+npx prisma generate
+npm i axios
+npm install react-hot-toast
+npx prisma studio
+npm i moment
+npm install nextjs-toploader
