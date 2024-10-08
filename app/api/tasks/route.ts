@@ -5,14 +5,18 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request) {
   try {
     const { userId } = auth();
-
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized", status: 401 });
     }
 
     const tasks = await prisma.task.findMany({
-      where: {
-        userId,
+      where: { userId },
+      select: {
+        id: true, // Include only necessary fields
+        title: true,
+        description: true,
+        createdAt: true,
+        // Add more fields as needed
       },
     });
 
