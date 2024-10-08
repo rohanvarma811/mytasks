@@ -11,14 +11,10 @@ export async function GET(req: Request) {
 
     const tasks = await prisma.task.findMany({
       where: { userId },
-      select: {
-        id: true, // Include only necessary fields
-        title: true,
-        description: true,
-        createdAt: true,
-        // Add more fields as needed
-      },
+      take: 20, // Limit to 10 tasks
+      orderBy: { createdAt: 'desc' }, // Optional: sort by creation date
     });
+    
 
     return NextResponse.json(tasks);
   } catch (error) {
