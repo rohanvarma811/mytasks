@@ -1,6 +1,6 @@
 # Task Management App
 
-This comprehensive full-stack Project Management Application is developed using Next.js, Prisma, MongoDB, React, and Clerk. The application empowers users to efficiently manage their tasks by providing a seamless interface for creating, updating, and deleting tasks.
+This comprehensive full-stack Task Management Application is developed using Next.js, Prisma, MongoDB, React, and Clerk. The application empowers users to efficiently manage their tasks by providing a seamless interface for creating, updating, and deleting tasks.
 
 ## Table of Contents
 
